@@ -11,7 +11,7 @@ class TacosController < ApplicationController
     taco = Taco.create(taco_params)
     taco.toppings << toppings
     if taco.save
-      render json: { id: taco.id, name: taco.name, base: taco.base, toppings: taco.toppings, is_vegetarian: taco.is_vegetarian}, status: :created
+      render json: { id: taco.id, name: taco.name, base: taco.base, toppings: taco.toppings.map(&:name), is_vegetarian: taco.is_vegetarian}, status: :created
     else
       render json: taco.errors, status: :unprocessable_entity
     end
