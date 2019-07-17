@@ -40,6 +40,6 @@ class TacosController < ApplicationController
   end
 
   def toppings
-    params[:toppings].split(',').map { |name| Topping.find_or_create_by(name: name.downcase) }
+    params[:toppings].split(',').map { |name| Topping.find_or_create_by(name: name.strip.downcase) }
   end
 end
